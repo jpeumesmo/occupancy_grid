@@ -1,0 +1,39 @@
+# import the other files to add a basic 'world' template and our robot file
+include "holonomic_robot.inc"
+include "map.inc"
+
+# window configurations for this simulation instance
+# see for detaiils: http://playerstage.sourceforge.net/doc/stage-cvs/group__window.html
+window
+(
+#  size [ 500.000 500.000 ]
+  center [8 8]
+#  rotate [ 0 0 ]
+  scale 20.000
+
+	show_data 1 # make sure we can see the effect of the controller
+    show_footprints 1 # show robot footprint
+    show_grid 1 # show world grid
+
+)
+
+# the 'floor' used, generally is a png/bmp file
+# see: http://playerstage.sourceforge.net/doc/stage-cvs/group__model.html
+floorplan
+(
+    bitmap "bitmaps/autolab.png"
+    map_resolution 0.032
+    size [16.000 16.000 0.500]
+	pose [8 8 0 0]
+    name "cave"
+    color "gray50"
+    gui_grid 1
+    gui_outline 1
+)
+
+# our robot from holonomic_robot.inc
+# see for details: http://playerstage.sourceforge.net/doc/stage-cvs/group__model__position.html
+roomba(
+    name "holonomic_robot"
+    pose [1 15 0 0]
+)
